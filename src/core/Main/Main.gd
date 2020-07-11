@@ -1,6 +1,6 @@
 extends Node2D
 
-export(String) var next_level
+export(PackedScene) var next_level
 export(int) var wait_time
 
 onready var timer = $LevelTimer
@@ -85,13 +85,13 @@ func game_over():
 	$AnimationPlayer.play("GameOver")
 	yield(get_tree().create_timer(3), "timeout")
 	get_tree().paused = false
-	get_tree().change_scene(next_level)
+	SceneTransition.switch_scene(next_level)
 
 func _on_Timer_timeout():
-	get_tree().change_scene(next_level)
+	SceneTransition.switch_scene(next_level)
 
 func _on_Character_got_shot() -> void:
-	pass # Replace with function body.
+	game_over()
 
 func _on_Character_shot() -> void:
 	switcheroo()
