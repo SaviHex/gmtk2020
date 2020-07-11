@@ -19,8 +19,8 @@ func hit():
 	$CollisionShape2D.disabled = true
 	$Sprite.visible = false
 	$Particles2D.emitting = false
-	yield(get_tree().create_timer(.5), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+	hit()
