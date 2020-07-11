@@ -15,7 +15,7 @@ func _ready() -> void:
 	self.paths = $EnemyPaths.get_children()
 	self.characters = $Characters.get_children()
 	init_characters()
-	
+
 	yield(get_tree().create_timer(.1), "timeout")
 	start_level()
 

@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://core/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://core/player/player.png" type="Texture" id=2]
+[ext_resource path="res://core/player/hand.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.5, 8 )
-
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -38,9 +33,9 @@ shape = SubResource( 1 )
 [node name="BulletPoint" type="Position2D" parent="Pivot"]
 position = Vector2( 16, 0 )
 
-[node name="Sprite" type="Sprite" parent="Pivot/BulletPoint"]
-scale = Vector2( 0.00195313, 8 )
-texture = SubResource( 3 )
+[node name="HandSprite" type="Sprite" parent="Pivot/BulletPoint"]
+position = Vector2( 1, -1 )
+texture = ExtResource( 3 )
 
 [node name="HitBox" type="Area2D" parent="."]
 
