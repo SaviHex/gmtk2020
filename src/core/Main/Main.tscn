@@ -1,27 +1,28 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://core/enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://core/enemy/GreenEnemy/GreenEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://core/Main/Main.gd" type="Script" id=3]
 [ext_resource path="res://core/EnemyPath/EnemyPath.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/pixel12x10/Pixel12x10.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://menus/main_theme.tres" type="Theme" id=6]
 [ext_resource path="res://textures/circle_progress_bar.png" type="Texture" id=7]
 [ext_resource path="res://textures/circle_progress_bar_under.png" type="Texture" id=8]
+[ext_resource path="res://core/enemy/RedEnemy/RedEnemy.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 21.6484, 24.9131, 0, 0, 0, 0, 98.973, 17.1483, 0, 0, 0, 0, 121.297, 87.6787, 0, 0, 0, 0, 47.5311, 122.944, 0, 0, 0, 0, 21.6484, 24.9131 )
+"points": PoolVector2Array( 0, 0, 0, 0, 15.7807, 20.7848, 0, 0, 0, 0, 215.35, 19.0819, 0.250345, -14.52, -0.250345, 14.52, 237.487, 39.8562, 0, 0, 0, 0, 216.372, 52.4571, 0, 0, 0, 0, 16.8024, 54.841, -0.736105, 15.8263, 0.736105, -15.8263, 5.56386, 37.4723, 0, 0, 0, 0, 15.7807, 20.7848 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 181.149, 11.6408, 0, 0, 0, 0, 232.092, 143.715, 0, 0, 0, 0, 140.017, 165.224, 0, 0, 0, 0, 181.149, 11.6408 )
+"points": PoolVector2Array( 24.4103, -11.9278, -24.4103, 11.9278, 224.984, 186.929, 17.4756, 10.2634, -17.4756, -10.2634, 142.045, 183.6, -9.15388, 9.43126, 9.15388, -9.43126, 128.453, 112.311, -19.6947, -11.6504, 19.6947, 11.6504, 219.714, 84.2942, 22.746, -12.7599, -22.746, 12.7599, 224.984, 186.929 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=7]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 19.2637, 112.772, 0, 0, 0, 0, 7.56569, 170.507, 0, 0, 0, 0, 119.263, 111.262, 0, 0, 0, 0, 163.413, 178.809, 0, 0, 0, 0, 252.469, 114.659, 0, 0, 0, 0, 219.639, 172.394, 0, 0, 0, 0, 157.375, 127.489, 0, 0, 0, 0, 86.8101, 167.488, 0, 0, 0, 0, 19.2637, 112.772 )
+"points": PoolVector2Array( -23.0234, 9.98605, 23.0234, -9.98605, 22.7669, 81.2429, 0, 0, 0, 0, 123.737, 83.7394, -5.82519, -38.5572, 5.82519, 38.5572, 192.252, 134.779, 25.2425, 7.48953, -25.2425, -7.48953, 32.4756, 178.607, -19.6947, 20.5269, 19.6947, -20.5269, 22.7669, 81.2429 )
 }
 
 [sub_resource type="DynamicFont" id=4]
@@ -34,6 +35,7 @@ next_level = "res://core/Main/Main.tscn"
 wait_time = 20
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 256.0
@@ -49,24 +51,21 @@ __meta__ = {
 [node name="Player" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 42.641, 155.093 )
 
-[node name="Enemy" parent="Characters" instance=ExtResource( 2 )]
-modulate = Color( 0.152941, 0.27451, 0.831373, 1 )
-position = Vector2( 226.897, 39.1916 )
+[node name="RedEnemy" parent="Characters" instance=ExtResource( 9 )]
 
-[node name="Enemy2" parent="Characters" instance=ExtResource( 2 )]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 42.3704, 45.6066 )
+[node name="GreenEnemy" parent="Characters" instance=ExtResource( 2 )]
 
 [node name="EnemyPaths" type="Node" parent="."]
 
 [node name="EnemyPath" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 1 )
+curve = SubResource( 5 )
 
 [node name="EnemyPath2" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 2 )
+position = Vector2( 0, -3.88347 )
+curve = SubResource( 6 )
 
 [node name="EnemyPath3" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 3 )
+curve = SubResource( 7 )
 
 [node name="LevelTimer" type="Timer" parent="."]
 

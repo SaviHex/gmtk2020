@@ -3,9 +3,8 @@
 [ext_resource path="res://core/EnemyPath/EnemyPath.gd" type="Script" id=1]
 
 [node name="EnemyPath" type="Path2D"]
-curve = null
 script = ExtResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 32.6485, 45.2958 )
-rotation = -0.196944
+position = Vector2( 17.2191, 76.2498 )
+rotation = -0.47762
