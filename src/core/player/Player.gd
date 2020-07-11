@@ -15,6 +15,14 @@ onready var bullet_point = get_node("Pivot/BulletPoint")
 
 var bullet = preload("res://core/bullet/Bullet.tscn")
 
+var paused : bool = false
+
+func pause():
+	paused = true
+
+func unpause():
+	paused = false
+
 func get_inputs():
 	var input_velocity = Vector2.ZERO
 
@@ -40,6 +48,10 @@ func get_target():
 
 func _physics_process(delta):
 	pivot.look_at(get_target())
+	
+	if paused:
+		return
+	
 	var input_velocity = get_inputs()
 
 	# If there's input, accelerate to the input velocity
@@ -62,3 +74,9 @@ func die():
 func _on_HitBox_body_entered(body: Node) -> void:
 	if body.is_in_group("bullet"):
 		die()
+
+func play_anim_before_teleport():
+	$AnimationPlayer.play("BeforeTeleport")
+	
+func play_anim_after_teleport():
+	$AnimationPlayer.play("AfterTeleport")

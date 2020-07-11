@@ -45,6 +45,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ "[center][shake]Game Over[/shake][/center]" ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 4.0
@@ -71,6 +83,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
 }
 
 [sub_resource type="DynamicFont" id=7]
@@ -116,9 +140,11 @@ pause_mode = 1
 position = Vector2( 42.641, 155.093 )
 
 [node name="RedEnemy" parent="Characters" instance=ExtResource( 9 )]
+pause_mode = 0
 shoot_time = 2.5
 
 [node name="GreenEnemy" parent="Characters" instance=ExtResource( 2 )]
+pause_mode = 0
 
 [node name="LevelTimer" type="Timer" parent="."]
 pause_mode = 1
@@ -164,6 +190,7 @@ anims/GameOver = SubResource( 5 )
 anims/LevelStart = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0

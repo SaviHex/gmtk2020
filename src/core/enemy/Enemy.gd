@@ -63,3 +63,9 @@ func _on_Enemy_body_entered(body: Node) -> void:
 func set_elapsed_time(value: float):
 	elapsed_time = value
 	self.shoot_progress.value = value
+
+func play_anim_before_teleport():
+	$AnimationPlayer.play("BeforeTeleport")
+	
+func play_anim_after_teleport():
+	$AnimationPlayer.play("AfterTeleport")
