@@ -16,6 +16,7 @@ func _physics_process(delta):
 		hit()
 
 func hit():
+	$Hit.play()
 	$CollisionShape2D.disabled = true
 	$Sprite.visible = false
 	$Particles2D.emitting = false

@@ -103,6 +103,7 @@ func start_level():
 
 func game_over():
 	get_node("Sounds/GameOver").play()
+	get_node("Characters/Player").pause()
 	get_tree().paused = true
 	$AnimationPlayer.play("GameOver")
 	yield(get_tree().create_timer(3), "timeout")

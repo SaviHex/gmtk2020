@@ -1,23 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://core/bullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://core/bullet/bullet.png" type="Texture" id=2]
 [ext_resource path="res://core/bullet/circle.png" type="Texture" id=3]
+[ext_resource path="res://sounds/Hit 5.wav" type="AudioStream" id=4]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.430909, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.430909, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 1, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="Curve" id=7]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 1, 0 ]
-
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
-
 [sub_resource type="ParticlesMaterial" id=5]
-trail_size_modifier = SubResource( 8 )
+trail_size_modifier = SubResource( 4 )
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -27,11 +28,14 @@ initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 2 )
 color = Color( 0.290196, 0.301961, 0.337255, 1 )
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 2.9179
+
+[sub_resource type="AudioStreamRandomPitch" id=7]
+audio_stream = ExtResource( 4 )
 
 [node name="Bullet" type="KinematicBody2D" groups=[
 "bullet",
@@ -56,3 +60,6 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 7 )
