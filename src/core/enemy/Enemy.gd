@@ -5,8 +5,7 @@ signal got_shot
 
 export var path_color: Color = Color.white
 export var speed: float = 1.0
-export var min_shoot_time: float = 1.0
-export var max_shoot_time: float = 5.0
+export var shoot_time: float = 5.0
 export var bullet_speed: float = 80
 
 onready var pivot = $Pivot
@@ -20,9 +19,7 @@ var current_path
 var current_target: Node2D
 
 func _ready():
-	randomize()
-	var random_time = rand_range(self.min_shoot_time, self.max_shoot_time)
-	self.shoot_timer.wait_time = random_time
+	self.shoot_timer.wait_time = self.shoot_time
 	self.shoot_timer.start()
 
 func init(path: Path2D, target: Node2D):
