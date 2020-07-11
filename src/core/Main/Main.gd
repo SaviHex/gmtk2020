@@ -3,7 +3,7 @@ extends Node2D
 export(String) var next_level
 export(int) var wait_time
 
-onready var timer = $Timer
+onready var timer = $LevelTimer
 
 var paths: Array
 var characters: Array
@@ -19,7 +19,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	
 	timer.get_node("TimeLeft").bbcode_text = "[right]%s[/right]" % floor(timer.time_left)
-	timer.get_node("TextureProgress").value = timer.time_left*100/wait_time
+	timer.get_node("ProgressBar").value = timer.time_left*100/wait_time
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed():
