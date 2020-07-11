@@ -25,7 +25,6 @@ func get_next_char(i: int) -> Node2D:
 
 
 func switcheroo():
-	print("switcheroo!")
 	var i = 0
 	for c in self.characters:
 		if c.is_in_group("enemy"):

@@ -27,6 +27,7 @@ func init(path: Path2D, target: Node2D):
 	self.initialized = true
 
 func disable():
+	self.current_path.stop()
 	self.initialized = false
 
 func _process(delta: float) -> void:
