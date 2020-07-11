@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://core/enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://core/player/hand.png" type="Texture" id=2]
 [ext_resource path="res://animations/AfterTeleport.tres" type="Animation" id=3]
 [ext_resource path="res://animations/BeforeTeleport.tres" type="Animation" id=4]
+[ext_resource path="res://sounds/Explosion with Ricochet.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.45222
@@ -69,5 +70,8 @@ autostart = true
 pause_mode = 2
 anims/AfterTeleport = ExtResource( 3 )
 anims/BeforeTeleport = ExtResource( 4 )
+
+[node name="Shooting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
