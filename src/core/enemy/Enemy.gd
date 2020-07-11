@@ -41,6 +41,5 @@ func shoot():
 	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
 
-
 func _on_ShootTimer_timeout() -> void:
 	shoot()
