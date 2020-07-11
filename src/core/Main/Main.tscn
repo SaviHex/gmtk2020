@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://core/enemy/GreenEnemy/GreenEnemy.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://textures/circle_progress_bar_under.png" type="Texture" id=8]
 [ext_resource path="res://core/enemy/RedEnemy/RedEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://menus/MainMenu/MainMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sounds/Beam Up.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/Explosion Sharp.wav" type="AudioStream" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -202,4 +204,14 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Teleporting" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 11 )
+
+[node name="LevelStart" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="GameOver" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
 [connection signal="timeout" from="LevelTimer" to="." method="_on_Timer_timeout"]

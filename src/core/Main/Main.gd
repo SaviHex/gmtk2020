@@ -60,6 +60,8 @@ func switcheroo():
 	# pause
 	get_tree().paused = true
 	p.pause()
+  
+  get_node("Sounds/Teleporting").play()
 
 	# play animation before the switch
 	p.play_anim_before_teleport()
@@ -100,6 +102,7 @@ func start_level():
 	get_tree().paused = false
 
 func game_over():
+	get_node("Sounds/GameOver").play()
 	get_tree().paused = true
 	$AnimationPlayer.play("GameOver")
 	yield(get_tree().create_timer(3), "timeout")

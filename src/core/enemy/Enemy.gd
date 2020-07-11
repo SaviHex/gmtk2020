@@ -49,6 +49,7 @@ func shoot():
 	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
 	emit_signal("shot")
+	$Shooting.play()
 
 func _on_ShootTimer_timeout() -> void:
 	self.elapsed_time += 0.1

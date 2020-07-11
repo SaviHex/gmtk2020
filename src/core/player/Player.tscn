@@ -5,6 +5,7 @@
 [ext_resource path="res://core/player/hand.png" type="Texture" id=3]
 [ext_resource path="res://animations/AfterTeleport.tres" type="Animation" id=4]
 [ext_resource path="res://animations/BeforeTeleport.tres" type="Animation" id=5]
+[ext_resource path="res://sounds/Explosion with Ricochet.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 3 )
@@ -52,4 +53,7 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AfterTeleport = ExtResource( 4 )
 anims/BeforeTeleport = ExtResource( 5 )
+
+[node name="Shooting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

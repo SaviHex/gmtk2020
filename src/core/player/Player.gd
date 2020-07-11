@@ -67,6 +67,7 @@ func shoot():
 	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
 	emit_signal("shot")
+	$Shooting.play()
 
 func die():
 	emit_signal("got_shot")
