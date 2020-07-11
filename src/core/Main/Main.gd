@@ -11,13 +11,13 @@ var characters: Array
 func _ready() -> void:
 	timer.wait_time = wait_time
 	timer.start()
-	
+
 	self.paths = $EnemyPaths.get_children()
 	self.characters = $Characters.get_children()
 	init_enemies()
 
 func _physics_process(delta):
-	
+
 	timer.get_node("TimeLeft").bbcode_text = "[right]%s[/right]" % floor(timer.time_left)
 	timer.get_node("ProgressBar").value = timer.time_left*100/wait_time
 
@@ -36,17 +36,31 @@ func get_next_char(i: int) -> Node2D:
 	return self.characters[(i + 1) % self.characters.size()]
 
 func switcheroo():
+	var i_p = get_player_index()
+	var i_e = (get_player_index() + 1) % self.characters.size()
+
+	var p = self.characters[i_p]
+	var e = self.characters[i_e]
+
+	e.disable()
+	self.characters[i_p] = e
+	self.characters[i_e] = p
+
+	var e_pos = e.position
+	e.position = p.position
+	p.position = e_pos
+
+	# Muda de lugar com o player mas continua mirando no mesmo.
+	e.init(self.paths[i_p], get_next_char(i_e))
+
+
+func get_player_index():
 	var i = 0
 	for c in self.characters:
-		if c.is_in_group("enemy"):
-			c.disable()
-		c.position = get_next_char(i).position
+		if c.is_in_group("player"):
+			return i
 		i += 1
-
-	var front_char = self.characters.pop_front()
-	self.characters.push_back(front_char)
-
-	init_enemies()
+	return -1
 
 func _on_Timer_timeout():
 	get_tree().change_scene(next_level)
