@@ -30,7 +30,9 @@ func init(path: Path2D, target: Node2D):
 	self.current_path.color = self.path_color
 	self.current_path.start(self.speed)
 	self.current_target = target
+	self.position = self.current_path.get_current_point()
 	self.initialized = true
+
 
 func disable():
 	self.current_path.stop()
@@ -67,6 +69,6 @@ func set_elapsed_time(value: float):
 
 func play_anim_before_teleport():
 	$AnimationPlayer.play("BeforeTeleport")
-	
+
 func play_anim_after_teleport():
 	$AnimationPlayer.play("AfterTeleport")

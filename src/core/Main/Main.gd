@@ -56,31 +56,31 @@ func switcheroo():
 	e.disable()
 	self.characters[i_p] = e
 	self.characters[i_e] = p
-	
+
 	# pause
 	get_tree().paused = true
 	p.pause()
-	
-	get_node("Sounds/Teleporting").play()
-	
+  
+  get_node("Sounds/Teleporting").play()
+
 	# play animation before the switch
 	p.play_anim_before_teleport()
 	e.play_anim_before_teleport()
 	yield(get_tree().create_timer(1), "timeout")
-	
+
 	var e_pos = e.position
 	e.position = p.position
 	p.position = e_pos
-	
+
 	# play animation after the switch
 	p.play_anim_after_teleport()
 	e.play_anim_after_teleport()
 	yield(get_tree().create_timer(1), "timeout")
-	
+
 	# unpause
 	p.unpause()
 	get_tree().paused = false
-	
+
 	e.current_path.color = Color.white
 	# Muda de lugar com o player mas continua mirando no mesmo.
 	e.init(self.paths[i_p], get_next_char(i_e))

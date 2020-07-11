@@ -48,10 +48,10 @@ func get_target():
 
 func _physics_process(delta):
 	pivot.look_at(get_target())
-	
+
 	if paused:
 		return
-	
+
 	var input_velocity = get_inputs()
 
 	# If there's input, accelerate to the input velocity
@@ -78,6 +78,6 @@ func _on_HitBox_body_entered(body: Node) -> void:
 
 func play_anim_before_teleport():
 	$AnimationPlayer.play("BeforeTeleport")
-	
+
 func play_anim_after_teleport():
 	$AnimationPlayer.play("AfterTeleport")

@@ -8,7 +8,8 @@ _data = {
 }
 
 [node name="EnemyPath" type="Path2D"]
-self_modulate = Color( 0.501961, 0.6, 1, 0.701961 )
+modulate = Color( 0.709804, 0.654902, 0.85098, 1 )
+self_modulate = Color( 1, 1, 1, 1 )
 curve = SubResource( 1 )
 script = ExtResource( 1 )
 
