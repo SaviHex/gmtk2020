@@ -61,7 +61,7 @@ func switcheroo():
 	get_tree().paused = true
 	p.pause()
   
-  get_node("Sounds/Teleporting").play()
+	get_node("Sounds/Teleporting").play()
 
 	# play animation before the switch
 	p.play_anim_before_teleport()
