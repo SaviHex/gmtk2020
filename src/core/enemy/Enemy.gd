@@ -26,6 +26,9 @@ func init(path: Path2D, target: Node2D):
 	self.current_target = target
 	self.initialized = true
 
+func disable():
+	self.initialized = false
+
 func _process(delta: float) -> void:
 	if self.initialized:
 		self.position = self.current_path.get_current_point()

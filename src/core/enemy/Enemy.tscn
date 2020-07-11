@@ -5,9 +5,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 4 )
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "enemy",
@@ -32,7 +34,7 @@ position = Vector2( 16, 0 )
 
 [node name="Sprite" type="Sprite" parent="Pivot/BulletPoint"]
 scale = Vector2( 0.00195313, 8 )
-texture = SubResource( 3 )
+texture = SubResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
