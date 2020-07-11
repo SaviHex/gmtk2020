@@ -14,3 +14,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0.5, 0 )
+
+[node name="ShootProgress" parent="Pivot/BulletPoint" index="1"]
+value = 0.0
+tint_under = Color( 0.298039, 0.262745, 0.435294, 1 )
+tint_over = Color( 0, 0, 0, 1 )
