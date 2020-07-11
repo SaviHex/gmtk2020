@@ -3,8 +3,7 @@ extends Node2D
 export(String) var next_level
 export(int) var wait_time
 
-onready var timer = get_node("Timer")
-onready var time_left_label = get_node("Timer/TimeLeft")
+onready var timer = $Timer
 
 var paths: Array
 var characters: Array
@@ -18,7 +17,9 @@ func _ready() -> void:
 	init_enemies()
 
 func _physics_process(delta):
-	time_left_label.set_text(str(floor(timer.time_left)))
+	
+	timer.get_node("TimeLeft").bbcode_text = "[right]%s[/right]" % floor(timer.time_left)
+	timer.get_node("TextureProgress").value = timer.time_left*100/wait_time
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.scancode == KEY_SPACE and event.is_pressed():

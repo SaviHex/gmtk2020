@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://core/enemy/Enemy.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://core/EnemyPath/EnemyPath.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/pixel12x10/Pixel12x10.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://menus/main_theme.tres" type="Theme" id=6]
+[ext_resource path="res://textures/circle_progress_bar.png" type="Texture" id=7]
+[ext_resource path="res://textures/circle_progress_bar_under.png" type="Texture" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,12 +25,24 @@ _data = {
 }
 
 [sub_resource type="DynamicFont" id=4]
+size = 8
 font_data = ExtResource( 5 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
 next_level = "res://core/Main/Main.tscn"
-wait_time = 10
+wait_time = 60
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 256.0
+margin_bottom = 192.0
+color = Color( 0.156863, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
 [node name="Characters" type="Node" parent="."]
 
@@ -59,15 +73,35 @@ curve = SubResource( 3 )
 [node name="TimeLeft" type="RichTextLabel" parent="Timer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 216.0
-margin_top = 16.0
-margin_bottom = -144.0
+margin_left = 180.506
+margin_top = 6.26694
+margin_right = -35.4944
+margin_bottom = -153.733
 rect_clip_content = false
 theme = ExtResource( 6 )
 custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0.611765, 0.588235, 0.588235, 1 )
 bbcode_enabled = true
+bbcode_text = "[right]60[/right]"
+text = "60"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="Timer"]
+margin_left = 216.0
+margin_top = 16.0
+margin_right = 728.0
+margin_bottom = 528.0
+rect_rotation = -27.9461
+rect_scale = Vector2( 0.0486724, 0.0486724 )
+step = 0.1
+value = 30.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 7 )
+fill_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
 }
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
