@@ -44,6 +44,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ "[center][shake]Game Over[/shake][/center]" ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 4.0
@@ -71,6 +83,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ "" ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 5 )
@@ -79,7 +103,7 @@ font_data = ExtResource( 5 )
 pause_mode = 2
 script = ExtResource( 3 )
 next_level = "res://core/Main/Main.tscn"
-wait_time = 20
+wait_time = 61
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
@@ -115,9 +139,11 @@ pause_mode = 1
 position = Vector2( 42.641, 155.093 )
 
 [node name="RedEnemy" parent="Characters" instance=ExtResource( 9 )]
+pause_mode = 0
 shoot_time = 2.5
 
 [node name="GreenEnemy" parent="Characters" instance=ExtResource( 2 )]
+pause_mode = 0
 
 [node name="LevelTimer" type="Timer" parent="."]
 pause_mode = 1
@@ -163,6 +189,7 @@ anims/GameOver = SubResource( 5 )
 anims/LevelStart = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0
@@ -171,8 +198,8 @@ rect_clip_content = false
 theme = ExtResource( 6 )
 custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "[center][wave]GO![/wave][/center]"
-text = "GO!"
+bbcode_text = "[center][shake]Game Over[/shake][/center]"
+text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
