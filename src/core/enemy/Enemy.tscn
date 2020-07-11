@@ -9,8 +9,11 @@ extents = Vector2( 8, 8 )
 
 [sub_resource type="GradientTexture" id=3]
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
 script = ExtResource( 1 )
+speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
