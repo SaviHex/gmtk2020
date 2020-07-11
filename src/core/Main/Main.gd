@@ -15,6 +15,9 @@ func _ready() -> void:
 	self.paths = $EnemyPaths.get_children()
 	self.characters = $Characters.get_children()
 	init_characters()
+	
+	yield(get_tree().create_timer(.1), "timeout")
+	start_level()
 
 func _physics_process(delta):
 
@@ -70,6 +73,19 @@ func get_player_index():
 			return i
 		i += 1
 	return -1
+
+func start_level():
+	get_tree().paused = true
+	$AnimationPlayer.play("LevelStart")
+	yield(get_tree().create_timer(4), "timeout")
+	get_tree().paused = false
+
+func game_over():
+	get_tree().paused = true
+	$AnimationPlayer.play("GameOver")
+	yield(get_tree().create_timer(3), "timeout")
+	get_tree().paused = false
+	get_tree().change_scene(next_level)
 
 func _on_Timer_timeout():
 	get_tree().change_scene(next_level)
