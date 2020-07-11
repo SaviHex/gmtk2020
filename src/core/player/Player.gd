@@ -8,11 +8,11 @@ var velocity = Vector2.ZERO
 onready var pivot = get_node("Pivot")
 onready var bullet_point = get_node("Pivot/BulletPoint")
 
-var bullet = preload("res://bullet/Bullet.tscn")
+var bullet = preload("res://core/bullet/Bullet.tscn")
 
 func get_inputs():
 	var input_velocity = Vector2.ZERO
-	
+
 	# Movement Input
 	if Input.is_action_pressed("right"):
 		input_velocity.x += 1
@@ -23,22 +23,22 @@ func get_inputs():
 	if Input.is_action_pressed("up"):
 		input_velocity.y -= 1
 	input_velocity = input_velocity.normalized() * speed
-	
+
 	# Shooting input
 	if Input.is_action_just_pressed('mouse_click'):
 		shoot()
-	
+
 	return input_velocity
 
 func get_target():
 	return get_global_mouse_position()
 
 func _physics_process(delta):
-	
+
 	pivot.look_at(get_target())
-	
+
 	var input_velocity = get_inputs()
-	
+
 	# If there's input, accelerate to the input velocity
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)

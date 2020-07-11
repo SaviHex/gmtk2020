@@ -8,7 +8,7 @@ var velocity = Vector2.ZERO
 onready var pivot = get_node("Pivot")
 onready var bullet_point = get_node("Pivot/BulletPoint")
 
-var bullet = preload("res://bullet/Bullet.tscn")
+var bullet = preload("res://core/bullet/Bullet.tscn")
 
 var path_positions = Array()
 var current_pos : int = 0
@@ -19,7 +19,7 @@ func _ready():
 		if node.get_name() == get_name():
 			path_node_parent = node
 			break
-	
+
 	for node in path_node_parent.get_children():
 		path_positions.append(node)
 
@@ -34,16 +34,16 @@ func get_target():
 func _physics_process(delta):
 	var target_pos = get_target()
 	var input_velocity = Vector2.ZERO
-	
+
 	if target_pos:
 		pivot.look_at(target_pos)
 		input_velocity = (target_pos - position).normalized() * speed
-		
+
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)
 	else:
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
-	velocity = move_and_slide(velocity)	
+	velocity = move_and_slide(velocity)
 
 func shoot():
 	var b = bullet.instance()
