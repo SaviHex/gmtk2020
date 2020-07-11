@@ -107,14 +107,16 @@ func game_over():
 	get_tree().paused = true
 	$AnimationPlayer.play("GameOver")
 	yield(get_tree().create_timer(3), "timeout")
-	get_tree().paused = false
+	#get_tree().paused = false
 	SceneTransition.switch_scene(next_level)
 
 func _on_Timer_timeout():
 	SceneTransition.switch_scene(next_level)
 
 func _on_Character_got_shot() -> void:
+	$Camera2D.shake(0.2, 15, 8)
 	game_over()
 
 func _on_Character_shot() -> void:
+	$Camera2D.shake(0.2, 10, 4)
 	switcheroo()
