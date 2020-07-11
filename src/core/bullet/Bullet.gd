@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
-var speed = 300
 var velocity = Vector2()
 
-func start(pos, dir):
+func start(pos, dir, speed):
 	rotation = dir
 	position = pos
 	velocity = Vector2(speed, 0).rotated(rotation)

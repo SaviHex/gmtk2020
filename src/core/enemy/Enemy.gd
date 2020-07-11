@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed: float = 1.0
 export var min_shoot_time: float = 1.0
 export var max_shoot_time: float = 5.0
+export var bullet_speed: float = 80
 
 onready var pivot = $Pivot
 onready var bullet_point = $Pivot/BulletPoint
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 
 func shoot():
 	var b = bullet.instance()
-	b.start(bullet_point.global_position, pivot.rotation)
+	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
 
 

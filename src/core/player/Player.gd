@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
-var speed = 150
+var speed = 80
 var friction = 0.2
 var acceleration = 0.5
 var velocity = Vector2.ZERO
+
+export var bullet_speed: float = 300
 
 onready var pivot = get_node("Pivot")
 onready var bullet_point = get_node("Pivot/BulletPoint")
@@ -49,5 +51,5 @@ func _physics_process(delta):
 
 func shoot():
 	var b = bullet.instance()
-	b.start(bullet_point.global_position, pivot.rotation)
+	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
