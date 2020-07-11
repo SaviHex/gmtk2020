@@ -9,5 +9,8 @@ path_color = Color( 0.898039, 0.231373, 0.266667, 1 )
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="DropShadow" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( 0.5, 0 )

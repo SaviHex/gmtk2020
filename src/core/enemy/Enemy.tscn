@@ -23,6 +23,17 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="DropShadow" type="Sprite" parent="."]
+modulate = Color( 0.113725, 0.0470588, 0.258824, 0.588235 )
+self_modulate = Color( 0.113725, 0.0470588, 0.258824, 0.588235 )
+position = Vector2( 2, 2 )
+z_index = -10
+offset = Vector2( 1, -1 )
+hframes = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 __meta__ = {
