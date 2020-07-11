@@ -1,4 +1,4 @@
-# gmtk2020
+# GMTK 2020
 
  Let's go baby
 
