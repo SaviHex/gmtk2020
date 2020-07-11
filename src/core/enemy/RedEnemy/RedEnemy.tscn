@@ -4,6 +4,7 @@
 [ext_resource path="res://core/enemy/RedEnemy/enemy_1.png" type="Texture" id=2]
 
 [node name="RedEnemy" instance=ExtResource( 1 )]
+path_color = Color( 0.898039, 0.231373, 0.266667, 1 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

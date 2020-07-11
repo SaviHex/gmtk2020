@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal shot
+signal got_shot
+
 var speed = 80
 var friction = 0.2
 var acceleration = 0.5
@@ -36,9 +39,7 @@ func get_target():
 	return get_global_mouse_position()
 
 func _physics_process(delta):
-
 	pivot.look_at(get_target())
-
 	var input_velocity = get_inputs()
 
 	# If there's input, accelerate to the input velocity
@@ -53,3 +54,11 @@ func shoot():
 	var b = bullet.instance()
 	b.start(bullet_point.global_position, pivot.rotation, bullet_speed)
 	get_parent().add_child(b)
+	emit_signal("shot")
+
+func die():
+	emit_signal("got_shot")
+
+func _on_HitBox_body_entered(body: Node) -> void:
+	if body.is_in_group("bullet"):
+		die()
