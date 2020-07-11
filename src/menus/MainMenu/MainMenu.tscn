@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menus/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/pixel12x10/Pixel12x10.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menus/SpringButton/SpringButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menus/MainMenu/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.156863, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleShadow" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 43.0
+margin_bottom = -95.0
+rect_clip_content = false
+theme = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]\"No killing when I'm away, please.\"[/wave][/center]"
+text = "\"No killing when I'm away, please.\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 40.0
+margin_bottom = -98.0
+rect_clip_content = false
+theme = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]\"No killing when I'm away, please.\"[/wave][/center]"
+text = "\"No killing when I'm away, please.\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = 91.0
+margin_right = -115.0
+margin_bottom = -77.0
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpringButton" parent="PlayButton" instance=ExtResource( 3 )]
+
+[node name="ExitButton" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.3317
+margin_top = 123.633
+margin_right = -169.668
+margin_bottom = -44.1427
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpringButton" parent="ExitButton" instance=ExtResource( 3 )]
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
