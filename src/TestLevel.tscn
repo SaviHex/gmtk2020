@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=2]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 40, 104 )
+
+[node name="Enemy" parent="Characters" instance=ExtResource( 2 )]
+position = Vector2( 152, 16 )
+
+[node name="Enemy2" parent="Characters" instance=ExtResource( 2 )]
+position = Vector2( 224, 88 )
+
+[node name="AiPath" type="Node2D" parent="Characters"]
+
+[node name="Enemy" type="Node2D" parent="Characters/AiPath"]
+
+[node name="1" type="Position2D" parent="Characters/AiPath/Enemy"]
+position = Vector2( 112, 8 )
+
+[node name="2" type="Position2D" parent="Characters/AiPath/Enemy"]
+position = Vector2( 104, 64 )
+
+[node name="3" type="Position2D" parent="Characters/AiPath/Enemy"]
+position = Vector2( 16, 32 )
+
+[node name="Enemy2" type="Node2D" parent="Characters/AiPath"]
+
+[node name="1" type="Position2D" parent="Characters/AiPath/Enemy2"]
+position = Vector2( 192, 104 )
+
+[node name="2" type="Position2D" parent="Characters/AiPath/Enemy2"]
+position = Vector2( 192, 176 )
+
+[node name="3" type="Position2D" parent="Characters/AiPath/Enemy2"]
+position = Vector2( 88, 168 )
+
+[node name="4" type="Position2D" parent="Characters/AiPath/Enemy2"]
+position = Vector2( 104, 96 )

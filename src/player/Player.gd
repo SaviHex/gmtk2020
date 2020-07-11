@@ -10,9 +10,7 @@ onready var bullet_point = get_node("Pivot/BulletPoint")
 
 var bullet = preload("res://bullet/Bullet.tscn")
 
-func _physics_process(delta):
-	pivot.look_at(get_global_mouse_position())
-	
+func get_inputs():
 	var input_velocity = Vector2.ZERO
 	
 	# Movement Input
@@ -29,7 +27,18 @@ func _physics_process(delta):
 	# Shooting input
 	if Input.is_action_just_pressed('mouse_click'):
 		shoot()
+	
+	return input_velocity
 
+func get_target():
+	return get_global_mouse_position()
+
+func _physics_process(delta):
+	
+	pivot.look_at(get_target())
+	
+	var input_velocity = get_inputs()
+	
 	# If there's input, accelerate to the input velocity
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)
@@ -39,7 +48,6 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func shoot():
-	# "Muzzle" is a Position2D placed at the barrel of the gun.
 	var b = bullet.instance()
 	b.start(bullet_point.global_position, pivot.rotation)
 	get_parent().add_child(b)
