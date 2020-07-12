@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://core/enemy/GreenEnemy/GreenEnemy.tscn" type="PackedScene" id=2]
@@ -9,29 +9,34 @@
 [ext_resource path="res://textures/circle_progress_bar.png" type="Texture" id=7]
 [ext_resource path="res://textures/circle_progress_bar_under.png" type="Texture" id=8]
 [ext_resource path="res://core/enemy/RedEnemy/RedEnemy.tscn" type="PackedScene" id=9]
-[ext_resource path="res://menus/MainMenu/MainMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://menus/End/End.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sounds/Beam Up.wav" type="AudioStream" id=11]
 [ext_resource path="res://sounds/Explosion Sharp.wav" type="AudioStream" id=12]
 [ext_resource path="res://core/Main/Camera.gd" type="Script" id=13]
 [ext_resource path="res://core/immovables/ScreenEdgeWalls.tscn" type="PackedScene" id=14]
 [ext_resource path="res://animations/AnimationLabels.tscn" type="PackedScene" id=15]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 15.7807, 20.7848, 0, 0, 0, 0, 215.35, 19.0819, 0.250345, -14.52, -0.250345, 14.52, 237.487, 39.8562, 0, 0, 0, 0, 216.372, 52.4571, 0, 0, 0, 0, 16.8024, 54.841, -0.736105, 15.8263, 0.736105, -15.8263, 5.56386, 37.4723, 0, 0, 0, 0, 15.7807, 20.7848 )
+"points": PoolVector2Array( 7.34162, -19.6889, -7.34162, 19.6889, 24, 40, -17.6866, -16.0181, 17.6866, 16.0181, 24, 96, -16.0181, 16.6855, 16.0181, -16.6855, 80, 96, 5.00565, 20.69, -5.00565, -20.69, 104, 48, 22.3586, 0.66742, -22.3586, -0.66742, 64, 16, 7.34162, -19.6889, -7.34162, 19.6889, 24, 40 )
 }
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 24.4103, -11.9278, -24.4103, 11.9278, 224.984, 186.929, 17.4756, 10.2634, -17.4756, -10.2634, 142.045, 183.6, -9.15388, 9.43126, 9.15388, -9.43126, 128.453, 112.311, -19.6947, -11.6504, 19.6947, 11.6504, 219.714, 84.2942, 22.746, -12.7599, -22.746, 12.7599, 224.984, 186.929 )
+"points": PoolVector2Array( 0, 0, 0, 0, 216, 112, 20.69, -16.6855, -20.69, 16.6855, 200, 152, 0, 0, 0, 0, 152, 168, 8.00904, 16.3518, -8.00904, -16.3518, 72, 160, 0, 0, 0, 0, 80, 128, -26.0294, -0.66742, 26.0294, 0.66742, 192, 72, 0, 0, 0, 0, 216, 112 )
 }
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( -23.0234, 9.98605, 23.0234, -9.98605, 22.7669, 81.2429, 0, 0, 0, 0, 123.737, 83.7394, -5.82519, -38.5572, 5.82519, 38.5572, 192.252, 134.779, 25.2425, 7.48953, -25.2425, -7.48953, 32.4756, 178.607, -19.6947, 20.5269, 19.6947, -20.5269, 22.7669, 81.2429 )
+"points": PoolVector2Array( 11.6798, -23.3597, -11.6798, 23.3597, 136, 40, -34.7058, -3.67081, 34.7058, 3.67081, 168, 120, -17.3529, 26.0294, 17.3529, -26.0294, 232, 96, 38.0429, 16.3518, -38.0429, -16.3518, 192, 24, 0, 0, 0, 0, 136, 40 )
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 136, 8, 19.3552, -25.6957, -19.3552, 25.6957, 56, 56, 0, 0, 0, 0, 32, 168, -23.026, 29.0328, 23.026, -29.0328, 56, 56, 0, 0, 0, 0, 136, 8 )
+}
+
+[sub_resource type="DynamicFont" id=5]
 size = 8
 font_data = ExtResource( 5 )
 
@@ -39,8 +44,8 @@ font_data = ExtResource( 5 )
 pause_mode = 2
 script = ExtResource( 3 )
 next_level = ExtResource( 10 )
-wait_time = 20
-level_name = "Test Name"
+wait_time = 25
+level_name = "The final one"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
@@ -58,27 +63,30 @@ __meta__ = {
 pause_mode = 1
 
 [node name="EnemyPath" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 1 )
+curve = SubResource( 6 )
 
 [node name="EnemyPath2" parent="EnemyPaths" instance=ExtResource( 4 )]
-position = Vector2( 0, -3.88347 )
 curve = SubResource( 2 )
 
 [node name="EnemyPath3" parent="EnemyPaths" instance=ExtResource( 4 )]
 curve = SubResource( 3 )
 
+[node name="EnemyPath4" parent="EnemyPaths" instance=ExtResource( 4 )]
+curve = SubResource( 4 )
+
 [node name="Characters" type="Node" parent="."]
 pause_mode = 1
 
 [node name="Player" parent="Characters" instance=ExtResource( 1 )]
-position = Vector2( 42.641, 155.093 )
-
-[node name="RedEnemy" parent="Characters" instance=ExtResource( 9 )]
-pause_mode = 0
-shoot_time = 2.5
+position = Vector2( 130.322, 114.788 )
 
 [node name="GreenEnemy" parent="Characters" instance=ExtResource( 2 )]
-pause_mode = 0
+shoot_time = 8.0
+
+[node name="RedEnemy2" parent="Characters" instance=ExtResource( 9 )]
+
+[node name="RedEnemy" parent="Characters" instance=ExtResource( 9 )]
+shoot_time = 6.0
 
 [node name="LevelTimer" type="Timer" parent="."]
 pause_mode = 1
@@ -92,7 +100,7 @@ margin_right = -35.4944
 margin_bottom = -153.733
 rect_clip_content = false
 theme = ExtResource( 6 )
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0.611765, 0.588235, 0.588235, 1 )
 bbcode_enabled = true
 bbcode_text = "[right]60[/right]"
@@ -119,6 +127,10 @@ __meta__ = {
 }
 
 [node name="AnimationLabels" parent="." instance=ExtResource( 15 )]
+margin_left = -3.53553
+margin_top = -13.7885
+margin_right = -3.53553
+margin_bottom = -13.7885
 
 [node name="Sounds" type="Node2D" parent="."]
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://core/enemy/RedEnemy/RedEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://core/EnemyPath/EnemyPath.tscn" type="PackedScene" id=2]
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://menus/MainMenu/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/Level2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menus/main_theme.tres" type="Theme" id=5]
 [ext_resource path="res://core/Main/Main.gd" type="Script" id=6]
 [ext_resource path="res://core/Main/Camera.gd" type="Script" id=7]
@@ -15,17 +15,17 @@
 [ext_resource path="res://core/immovables/ScreenEdgeWalls.tscn" type="PackedScene" id=13]
 [ext_resource path="res://animations/AnimationLabels.tscn" type="PackedScene" id=14]
 
-[sub_resource type="Curve2D" id=9]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -32.8872, -0.922072, 32.8872, 0.922072, 133.57, 7.27687, 0, 0, 0, 0, 165.843, 67.8263, 1.22943, -61.1641, -1.22943, 61.1641, 243.604, 98.2546, 0, 0, 0, 0, 172.297, 141.285, 64.2377, 0.307357, -64.2377, -0.307357, 133.57, 184.622, 0, 0, 0, 0, 79.7827, 142.207, 0, 71.3069, 0, -71.3069, 24.4584, 96.4105, 0, 0, 0, 0, 90.5402, 68.7483, -36.2682, -0.922072, 36.2682, 0.922072, 133.878, 7.27687 )
 }
 
-[sub_resource type="Curve2D" id=10]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 57.0335, 33.1136, 0, 0, 0, 0, 49.4417, 161.297, 0, 0, 0, 0, 202.444, 160.129, 0, 0, 0, 0, 212.956, 33.1136, 0, 0, 0, 0, 57.0335, 33.1136 )
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=3]
 size = 8
 font_data = ExtResource( 12 )
 
@@ -33,8 +33,16 @@ font_data = ExtResource( 12 )
 pause_mode = 2
 script = ExtResource( 6 )
 next_level = ExtResource( 4 )
-wait_time = 20
-level_name = "Survive (you both)"
+wait_time = 15
+
+[node name="ScreenEdgeWalls" parent="." instance=ExtResource( 13 )]
+
+[node name="AnimationLabels" parent="." instance=ExtResource( 14 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 128, 96 )
+current = true
+script = ExtResource( 7 )
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
@@ -52,16 +60,16 @@ __meta__ = {
 pause_mode = 1
 
 [node name="EnemyPath" parent="EnemyPaths" instance=ExtResource( 2 )]
-curve = SubResource( 9 )
+curve = SubResource( 1 )
 
 [node name="EnemyPath2" parent="EnemyPaths" instance=ExtResource( 2 )]
-curve = SubResource( 10 )
+curve = SubResource( 2 )
 
 [node name="Characters" type="Node" parent="."]
 pause_mode = 1
 
 [node name="Player" parent="Characters" instance=ExtResource( 3 )]
-position = Vector2( 128, 96 )
+position = Vector2( 128, 112 )
 
 [node name="RedEnemy" parent="Characters" instance=ExtResource( 1 )]
 pause_mode = 0
@@ -79,7 +87,7 @@ margin_right = -35.4944
 margin_bottom = -153.733
 rect_clip_content = false
 theme = ExtResource( 5 )
-custom_fonts/normal_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0.611765, 0.588235, 0.588235, 1 )
 bbcode_enabled = true
 bbcode_text = "[right]60[/right]"
@@ -105,8 +113,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationLabels" parent="." instance=ExtResource( 14 )]
-
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Teleporting" type="AudioStreamPlayer" parent="Sounds"]
@@ -116,11 +122,4 @@ stream = ExtResource( 11 )
 
 [node name="GameOver" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 128, 96 )
-current = true
-script = ExtResource( 7 )
-
-[node name="ScreenEdgeWalls" parent="." instance=ExtResource( 13 )]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_Timer_timeout"]

@@ -14,9 +14,9 @@ __meta__ = {
 [node name="LevelTitle" type="RichTextLabel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 48.0
+margin_top = 38.3297
 margin_right = 256.0
-margin_bottom = 90.0
+margin_bottom = 80.3297
 rect_clip_content = false
 theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 1 )

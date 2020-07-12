@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://menus/Tutorial/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://menus/SpringButton/SpringButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/pixel12x10/Pixel12x10.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/main_theme.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="Tutorial" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.156863, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 64.0
+margin_bottom = -57.0
+rect_clip_content = false
+theme = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Don't let anyone die before the time ends!
+
+Aim for the enemy bullets if necessary!
+
+Be carefull, because when anyone shoots ..."
+text = "Don't let anyone die before the time ends!
+
+Aim for the enemy bullets if necessary!
+
+Be carefull, because when anyone shoots ..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YouWonShadow" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 28.3712
+margin_top = 25.6119
+margin_right = -24.6288
+margin_bottom = -105.388
+rect_clip_content = false
+theme = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]Tutorial[/wave][/center]"
+text = "Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YouWon" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.622
+margin_top = 21.8661
+margin_right = -25.378
+margin_bottom = -109.134
+rect_clip_content = false
+theme = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]Tutorial[/wave][/center]"
+text = "Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 168.0
+margin_top = 144.0
+margin_right = -26.0322
+margin_bottom = -23.7757
+rect_rotation = -11.2434
+text = "Got it!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpringButton" parent="ExitButton" instance=ExtResource( 2 )]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]

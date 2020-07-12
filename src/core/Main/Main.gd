@@ -11,15 +11,16 @@ var characters: Array
 
 func _ready() -> void:
 	AudioServer.get_bus_effect(AudioServer.get_bus_index("Master"), 0).cutoff_hz = 20000
-
-	timer.wait_time = wait_time
-	timer.start()
-
+	
 	self.paths = $EnemyPaths.get_children()
 	self.characters = $Characters.get_children()
 	init_characters()
-
+	
 	yield(get_tree().create_timer(.1), "timeout")
+	
+	timer.wait_time = wait_time
+	timer.start()
+	
 	start_level()
 
 func _physics_process(delta):
@@ -106,7 +107,10 @@ func switcheroo():
 
 	e.current_path.color = Color.transparent
 	# Muda de lugar com o player mas continua mirando no mesmo.
-	e.init(self.paths[i_p], get_next_char(i_e))
+	if self.characters.size() == 2:
+		e.init(self.paths[i_p], p)
+	else:
+		e.init(self.paths[i_p], get_next_char(i_e))
 
 func get_player_index():
 	var i = 0
@@ -146,7 +150,7 @@ func game_over():
 	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][shake]Game Over[/shake][/center]"
 	yield(get_tree().create_timer(2), "timeout")
 	#get_tree().paused = false
-	SceneTransition.switch_scene(next_level)
+	SceneTransition.reload_scene()
 
 func _on_Timer_timeout():
 	SceneTransition.switch_scene(next_level)
