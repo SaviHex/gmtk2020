@@ -39,7 +39,7 @@ font_data = ExtResource( 5 )
 pause_mode = 2
 script = ExtResource( 3 )
 next_level = ExtResource( 10 )
-wait_time = 20
+wait_time = 15
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100

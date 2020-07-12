@@ -43,11 +43,13 @@ bbcode_enabled = true
 bbcode_text = "Don't let anyone die before the time ends!
 
 Aim for the enemy bullets if necessary!
+Your bullets are faster than the others!
 
 Be carefull, because when anyone shoots ..."
 text = "Don't let anyone die before the time ends!
 
 Aim for the enemy bullets if necessary!
+Your bullets are faster than the others!
 
 Be carefull, because when anyone shoots ..."
 __meta__ = {
@@ -97,7 +99,7 @@ margin_top = 144.0
 margin_right = -26.0322
 margin_bottom = -23.7757
 rect_rotation = -11.2434
-text = "Got it!"
+text = "Got it?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
