@@ -36,8 +36,8 @@ theme = ExtResource( 1 )
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
-bbcode_text = "[center][wave]\"No killing when I'm away, please.\"[/wave][/center]"
-text = "\"No killing when I'm away, please.\""
+bbcode_text = "[center][wave]\"No killing while I'm away, please.\"[/wave][/center]"
+text = "\"No killing while I'm away, please.\""
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,8 +51,8 @@ rect_clip_content = false
 theme = ExtResource( 1 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center][wave]\"No killing when I'm away, please.\"[/wave][/center]"
-text = "\"No killing when I'm away, please.\""
+bbcode_text = "[center][wave]\"No killing while I'm away, please.\"[/wave][/center]"
+text = "\"No killing while I'm away, please.\""
 __meta__ = {
 "_edit_use_anchors_": false
 }

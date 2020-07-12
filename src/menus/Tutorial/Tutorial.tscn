@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
 margin_top = 64.0
-margin_bottom = -57.0
+margin_bottom = -8.0
 rect_clip_content = false
 theme = ExtResource( 4 )
 custom_fonts/normal_font = SubResource( 1 )
@@ -45,13 +45,25 @@ bbcode_text = "Don't let anyone die before the time ends!
 Aim for the enemy bullets if necessary!
 Your bullets are faster than the others!
 
-Be carefull, because when anyone shoots ..."
+Be carefull, because when anyone shoots ...
+
+
+
+
+WASD to move
+Left Click to shoot"
 text = "Don't let anyone die before the time ends!
 
 Aim for the enemy bullets if necessary!
 Your bullets are faster than the others!
 
-Be carefull, because when anyone shoots ..."
+Be carefull, because when anyone shoots ...
+
+
+
+
+WASD to move
+Left Click to shoot"
 __meta__ = {
 "_edit_use_anchors_": false
 }
