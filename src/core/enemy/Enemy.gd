@@ -72,3 +72,6 @@ func play_anim_before_teleport():
 
 func play_anim_after_teleport():
 	$AnimationPlayer.play("AfterTeleport")
+
+func set_sprite(num):
+	$Sprite.frame = num

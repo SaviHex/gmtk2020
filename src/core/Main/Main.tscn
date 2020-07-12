@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://core/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://core/enemy/GreenEnemy/GreenEnemy.tscn" type="PackedScene" id=2]
@@ -13,94 +13,26 @@
 [ext_resource path="res://sounds/Beam Up.wav" type="AudioStream" id=11]
 [ext_resource path="res://sounds/Explosion Sharp.wav" type="AudioStream" id=12]
 [ext_resource path="res://core/Main/Camera.gd" type="Script" id=13]
+[ext_resource path="res://core/immovables/ScreenEdgeWalls.tscn" type="PackedScene" id=14]
+[ext_resource path="res://animations/AnimationLabels.tscn" type="PackedScene" id=15]
 
-[sub_resource type="Curve2D" id=5]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 15.7807, 20.7848, 0, 0, 0, 0, 215.35, 19.0819, 0.250345, -14.52, -0.250345, 14.52, 237.487, 39.8562, 0, 0, 0, 0, 216.372, 52.4571, 0, 0, 0, 0, 16.8024, 54.841, -0.736105, 15.8263, 0.736105, -15.8263, 5.56386, 37.4723, 0, 0, 0, 0, 15.7807, 20.7848 )
 }
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 24.4103, -11.9278, -24.4103, 11.9278, 224.984, 186.929, 17.4756, 10.2634, -17.4756, -10.2634, 142.045, 183.6, -9.15388, 9.43126, 9.15388, -9.43126, 128.453, 112.311, -19.6947, -11.6504, 19.6947, 11.6504, 219.714, 84.2942, 22.746, -12.7599, -22.746, 12.7599, 224.984, 186.929 )
 }
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( -23.0234, 9.98605, 23.0234, -9.98605, 22.7669, 81.2429, 0, 0, 0, 0, 123.737, 83.7394, -5.82519, -38.5572, 5.82519, 38.5572, 192.252, 134.779, 25.2425, 7.48953, -25.2425, -7.48953, 32.4756, 178.607, -19.6947, 20.5269, 19.6947, -20.5269, 22.7669, 81.2429 )
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=7]
 size = 8
-font_data = ExtResource( 5 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "GameOver"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/RichTextLabel:bbcode_text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "[center][shake]Game Over[/shake][/center]" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer/RichTextLabel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
-[sub_resource type="Animation" id=3]
-length = 4.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/RichTextLabel:bbcode_text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ "[center][wave]3[/wave][/center]", "[center][wave]2[/wave][/center]", "[center][wave]1[/wave][/center]", "[center][wave]GO![/wave][/center]" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer/RichTextLabel:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 3.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "" ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimationPlayer/RichTextLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-
-[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 5 )
 
 [node name="Main" type="Node2D"]
@@ -108,6 +40,7 @@ pause_mode = 2
 script = ExtResource( 3 )
 next_level = ExtResource( 10 )
 wait_time = 20
+level_name = "Test Name"
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
@@ -125,14 +58,14 @@ __meta__ = {
 pause_mode = 1
 
 [node name="EnemyPath" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 5 )
+curve = SubResource( 4 )
 
 [node name="EnemyPath2" parent="EnemyPaths" instance=ExtResource( 4 )]
 position = Vector2( 0, -3.88347 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="EnemyPath3" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="Characters" type="Node" parent="."]
 pause_mode = 1
@@ -159,7 +92,7 @@ margin_right = -35.4944
 margin_bottom = -153.733
 rect_clip_content = false
 theme = ExtResource( 6 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.611765, 0.588235, 0.588235, 1 )
 bbcode_enabled = true
 bbcode_text = "[right]60[/right]"
@@ -185,26 +118,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-pause_mode = 2
-anims/GameOver = SubResource( 2 )
-anims/LevelStart = SubResource( 3 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="AnimationPlayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 40.0
-margin_bottom = -98.0
-rect_clip_content = false
-theme = ExtResource( 6 )
-custom_fonts/normal_font = SubResource( 4 )
-bbcode_enabled = true
-bbcode_text = "[center][shake]Game Over[/shake][/center]"
-text = "Game Over"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
+[node name="AnimationLabels" parent="." instance=ExtResource( 15 )]
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -220,4 +134,6 @@ stream = ExtResource( 12 )
 position = Vector2( 128, 96 )
 current = true
 script = ExtResource( 13 )
+
+[node name="ScreenEdgeWalls" parent="." instance=ExtResource( 14 )]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_Timer_timeout"]

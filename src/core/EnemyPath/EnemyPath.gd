@@ -32,3 +32,6 @@ func get_current_point() -> Vector2:
 func set_color(value: Color):
 	color = value
 	update()
+
+func advance(amount):
+	self.path_follow.offset += amount

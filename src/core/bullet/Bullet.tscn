@@ -41,9 +41,6 @@ audio_stream = ExtResource( 4 )
 "bullet",
 ]]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -5, 0 )
@@ -63,3 +60,5 @@ shape = SubResource( 6 )
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 7 )
+
+[node name="BulletHitBullet" type="AudioStreamPlayer" parent="."]

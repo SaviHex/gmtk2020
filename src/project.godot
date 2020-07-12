@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneTransition="*res://helpers/SceneTransition/SceneTransition.tscn"
+MusicManager="*res://helpers/MusicManager/MusicManager.tscn"
 
 [display]
 

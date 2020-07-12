@@ -2,6 +2,7 @@ extends Node2D
 
 export(PackedScene) var next_level
 export(int) var wait_time
+export(String) var level_name
 
 onready var timer = $LevelTimer
 
@@ -9,6 +10,8 @@ var paths: Array
 var characters: Array
 
 func _ready() -> void:
+	AudioServer.get_bus_effect(AudioServer.get_bus_index("Master"), 0).cutoff_hz = 20000
+
 	timer.wait_time = wait_time
 	timer.start()
 
@@ -72,7 +75,25 @@ func switcheroo():
 	yield(get_tree().create_timer(1), "timeout")
 
 	p.position = e.position
-	e.position = self.paths[i_p].get_current_point()
+	
+	var too_close = true
+	var count = 0
+	var dist
+	var dist_min = 50
+	
+	while too_close:
+		count += 1
+		if count > 30:
+			break
+		e.position = self.paths[i_p].get_current_point()
+		too_close = false
+		for b in get_tree().get_nodes_in_group("bullet"):
+			dist = sqrt(pow(b.position.x - e.position.x, 2) + pow(b.position.y - e.position.y, 2))
+			if dist < dist_min:
+				too_close = true
+				break
+		if too_close:
+			self.paths[i_p].advance(10)
 
 	# play animation after the switch
 	p.play_anim_after_teleport()
@@ -98,17 +119,32 @@ func get_player_index():
 func start_level():
 	get_tree().paused = true
 	get_node("Characters/Player").pause()
-	$AnimationPlayer.play("LevelStart")
-	yield(get_tree().create_timer(4), "timeout")
+	
+	get_node("AnimationLabels/LevelTitle").bbcode_text = "[center][wave]%s[/wave][/center]" % level_name
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][wave]3[/wave][/center]"
+	yield(get_tree().create_timer(1), "timeout")
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][wave]2[/wave][/center]"
+	yield(get_tree().create_timer(1), "timeout")
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][wave]1[/wave][/center]"
+	yield(get_tree().create_timer(1), "timeout")
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][wave]GO![/wave][/center]"
+	yield(get_tree().create_timer(.5), "timeout")
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = ""
+	get_node("AnimationLabels/LevelTitle").bbcode_text = ""
+	
 	get_node("Characters/Player").unpause()
 	get_tree().paused = false
 
 func game_over():
+	AudioServer.get_bus_effect(AudioServer.get_bus_index("Master"), 0).cutoff_hz = 2000
+	for c in self.characters:
+		c.set_sprite(1)
 	get_node("Sounds/GameOver").play()
 	get_node("Characters/Player").pause()
 	get_tree().paused = true
-	$AnimationPlayer.play("GameOver")
-	yield(get_tree().create_timer(3), "timeout")
+	
+	get_node("AnimationLabels/CountDownGameOver").bbcode_text = "[center][shake]Game Over[/shake][/center]"
+	yield(get_tree().create_timer(2), "timeout")
 	#get_tree().paused = false
 	SceneTransition.switch_scene(next_level)
 

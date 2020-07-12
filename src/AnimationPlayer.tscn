@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/pixel12x10/Pixel12x10.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menus/main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://animations/LevelStart.tres" type="Animation" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+anims/LevelStart = ExtResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 49.146
+margin_bottom = -88.854
+rect_clip_content = false
+theme = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LevelTitle" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 22.9539
+margin_bottom = -115.046
+rect_clip_content = false
+theme = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave][/wave][/center]"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
