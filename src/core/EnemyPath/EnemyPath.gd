@@ -24,9 +24,11 @@ func reset():
 func _process(delta: float) -> void:
 	if not self.is_stopped:
 		self.path_follow.offset += self.speed
+	update()
 
 func get_current_point() -> Vector2:
 	return self.path_follow.position
 
 func set_color(value: Color):
 	color = value
+	update()

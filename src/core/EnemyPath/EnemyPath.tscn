@@ -12,6 +12,7 @@ modulate = Color( 0.709804, 0.654902, 0.85098, 1 )
 self_modulate = Color( 1, 1, 1, 1 )
 curve = SubResource( 1 )
 script = ExtResource( 1 )
+color = Color( 1, 1, 1, 0 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2( 17.2191, 76.2498 )
