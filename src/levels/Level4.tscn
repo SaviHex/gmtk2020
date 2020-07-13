@@ -15,7 +15,7 @@
 [ext_resource path="res://core/immovables/ScreenEdgeWalls.tscn" type="PackedScene" id=14]
 [ext_resource path="res://animations/AnimationLabels.tscn" type="PackedScene" id=15]
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -7.07106, -7.42461, 7.07106, 7.42461, 18.0375, 79.2164, -126.926, 47.3761, 126.926, -47.3761, 137.185, 171.494, 70.0035, -3.53553, -70.0035, 3.53553, 78.1415, 14.8697, 0, 0, 0, 0, 18.3911, 79.2164 )
 }
@@ -61,7 +61,7 @@ __meta__ = {
 pause_mode = 1
 
 [node name="EnemyPath" parent="EnemyPaths" instance=ExtResource( 4 )]
-curve = SubResource( 6 )
+curve = SubResource( 1 )
 
 [node name="EnemyPath2" parent="EnemyPaths" instance=ExtResource( 4 )]
 curve = SubResource( 2 )

@@ -28,7 +28,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 160, 176, 0, 0, 0, 0, 96, 176, 0, 0, 0, 0, 96, 64, 0, 0, 0, 0, 160, 64, 0, 0, 0, 0, 160, 176, 0, 0, 0, 0, 96, 176 )
+"points": PoolVector2Array( 0, 0, 0, 0, 96, 176, 0, 0, 0, 0, 96, 64, 0, 0, 0, 0, 160, 64, 0, 0, 0, 0, 160, 176, 0, 0, 0, 0, 96, 176 )
 }
 
 [sub_resource type="Curve2D" id=4]
